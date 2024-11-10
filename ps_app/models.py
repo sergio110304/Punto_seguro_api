@@ -6,17 +6,17 @@ from django.db.models.signals import post_save
 # Create your models here.
 class Users(models.Model):
     iduser = models.AutoField(primary_key=True)
-    nombre = models.CharField(max_length=50)
-    apellido = models.CharField(max_length=50)
-    contraseña = models.CharField(max_length=50)
-    correo = models.EmailField(max_length=50)
-    telefono = models.CharField(max_length=10)
-    direccion = models.TextField(max_length=50)
-    municipio = models.CharField(max_length=50)
-    departmento = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
+    password = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
+    phone = models.CharField(max_length=10)
+    address = models.TextField(max_length=50)
+    municipality = models.CharField(max_length=50)
+    department = models.CharField(max_length=50)
     
     def __str__(self):
-        return f"Usuario {self.iduser}: {self.nombre} {self.apellido}"
+        return f"Usuario {self.iduser}: {self.name} {self.lastname}"
     
 
 class Stations(models.Model):
@@ -66,7 +66,7 @@ class UserLocation(models.Model):
 
 @receiver(post_save, sender=Users)
 def actualizar_ubicacion_usuario(sender, instance, **kwargs):
-    latitud, longitud = obtener_latitud_longitud(instance.departmento, instance.municipio, instance.direccion)
+    latitud, longitud = obtener_latitud_longitud(instance.department, instance.municipality, instance.address)
     if latitud and longitud:
         UserLocation.objects.update_or_create(
             userid=instance,
