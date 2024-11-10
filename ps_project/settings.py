@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'ps_project.wsgi.application'
 
 # Inicializar django-environ
 env = environ.Env()
-environ.Env.read_env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 DATABASES = {
     'default': {

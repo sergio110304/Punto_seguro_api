@@ -3,3 +3,4 @@ psvenv/
 __pycache__/
 ps_app/createdb.py
 ps_app/subir_db.py
+.env
