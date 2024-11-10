@@ -71,7 +71,7 @@ def actualizar_ubicacion_usuario(sender, instance, **kwargs):
         UserLocation.objects.update_or_create(
             userid=instance,
             defaults={
-                'direccioncasa': instance.direccion,
+                'direccioncasa': instance.address,
                 'latitudcasa': latitud,
                 'longitudcasa': longitud,
                 'ubicacionactual': f"{latitud}, {longitud}",
