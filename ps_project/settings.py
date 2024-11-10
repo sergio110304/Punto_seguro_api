@@ -29,7 +29,6 @@ DEBUG = True
 
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1,[::1]").split(",")
-print("DJANGO_ALLOWED_HOSTS:", os.getenv("DJANGO_ALLOWED_HOSTS"))
 
 # Application definition
 
@@ -82,6 +81,8 @@ WSGI_APPLICATION = 'ps_project.wsgi.application'
 # Inicializar django-environ
 env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+# Leer la clave de la API de Google Maps desde el archivo .env
+GOOGLE_MAPS_API_KEY = env('GOOGLE_MAPS_API_KEY')
 
 DATABASES = {
     'default': {
@@ -137,3 +138,8 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,  # Número de elementos por página
+}

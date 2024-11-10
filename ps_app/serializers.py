@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Users, Observations, Stations, Sensors
+from .models import Users, Observations, Stations, Sensors, UserLocation
 
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,3 +22,9 @@ class SensorsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Sensors
         fields = '__all__'
+
+class UserLocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserLocation
+        fields = '__all__'
+        read_only_fields = ['userid']

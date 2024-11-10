@@ -1,6 +1,6 @@
-from .models import Users, Observations, Stations, Sensors
+from .models import Users, Observations, Stations, Sensors, UserLocation
 from rest_framework import viewsets, permissions
-from .serializers import UsersSerializer, ObservationsSerializer, StationsSerializer, SensorsSerializer
+from .serializers import UsersSerializer, ObservationsSerializer, StationsSerializer, SensorsSerializer, UserLocationSerializer
 
 
 class UsersViewSet(viewsets.ModelViewSet):
@@ -33,3 +33,10 @@ class SensorsViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = SensorsSerializer
+
+class UserLocationViewSet(viewsets.ModelViewSet):
+    queryset = UserLocation.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = UserLocationSerializer
