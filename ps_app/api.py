@@ -40,3 +40,11 @@ class UserLocationViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = UserLocationSerializer
+'''
+class MeetingViewSet(viewsets.ModelViewSet):
+    queryset = MeetingPoint.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = MeetingPointSerializer
+    '''

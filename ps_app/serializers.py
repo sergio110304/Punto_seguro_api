@@ -28,3 +28,9 @@ class UserLocationSerializer(serializers.ModelSerializer):
         model = UserLocation
         fields = '__all__'
         read_only_fields = ['userid']
+'''
+class MeetingPointSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MeetingPoint
+        fields = '__all__'
+        '''

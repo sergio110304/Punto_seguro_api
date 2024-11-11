@@ -13,4 +13,6 @@ router.register('api/sensors', SensorsViewSet, 'sensors')
 
 router.register('api/userlocation', UserLocationViewSet, 'userlocation')
 
+#router.register('api/meetingpoint', MeetingViewSet, 'meetingpoint')
+
 urlpatterns = router.urls

@@ -63,6 +63,17 @@ class UserLocation(models.Model):
     def __str__(self):
         return f"Ubicación de {self.userid}: casa: {self.direccioncasa} --- actual: {self.ubicacionactual}"
 
+                                     
+class MeetingPoint(models.Model):
+    nombreSede = models.CharField(max_length=200)
+    departamentoSedeDesc = models.CharField(max_length=150)
+    municipioSedeDesc = models.CharField(max_length=150)
+    emailSede = models.EmailField(max_length=200)
+    telefonoSede = models.CharField(max_length=100)
+    direccionSede = models.TextField(max_length=200)
+
+    def __str__(self):
+        return f"Punto de Encuentro: {self.nombreSede} en {self.departamentoSedeDesc}"
 
 @receiver(post_save, sender=Users)
 def actualizar_ubicacion_usuario(sender, instance, **kwargs):
