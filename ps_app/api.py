@@ -1,6 +1,6 @@
-from .models import Users, Observations, Stations, Sensors, UserLocation
+from .models import Users, Observations, Stations, Sensors, UserLocation, MeetingPoint, ModelosPrediccion
 from rest_framework import viewsets, permissions
-from .serializers import UsersSerializer, ObservationsSerializer, StationsSerializer, SensorsSerializer, UserLocationSerializer
+from .serializers import UsersSerializer, ObservationsSerializer, StationsSerializer, SensorsSerializer, UserLocationSerializer, MeetingPointSerializer, ModelosPrediccionSerializer
 
 
 class UsersViewSet(viewsets.ModelViewSet):
@@ -40,11 +40,18 @@ class UserLocationViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = UserLocationSerializer
-'''
+
 class MeetingViewSet(viewsets.ModelViewSet):
     queryset = MeetingPoint.objects.all()
     permission_classes = [
         permissions.AllowAny
     ]
     serializer_class = MeetingPointSerializer
-    '''
+
+class ModelosPrediccionViewSet(viewsets.ModelViewSet):
+    queryset = ModelosPrediccion.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = ModelosPrediccionSerializer
+    
