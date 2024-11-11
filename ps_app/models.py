@@ -74,6 +74,15 @@ class MeetingPoint(models.Model):
 
     def __str__(self):
         return f"Punto de Encuentro: {self.nombreSede} en {self.departamentoSedeDesc}"
+    
+class ModelosPrediccion(models.Model):
+    idmodelo = models.AutoField(primary_key=True)
+    modeloblob = models.BinaryField()
+    descripcion = models.TextField(max_length=100)
+    municipio = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return f"Modelo {self.idmodelo}: {self.descripcion}"
 
 @receiver(post_save, sender=Users)
 def actualizar_ubicacion_usuario(sender, instance, **kwargs):
