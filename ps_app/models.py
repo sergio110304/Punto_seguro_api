@@ -92,6 +92,18 @@ class ModelosPrediccionPrecipitacion(models.Model):
     
     def __str__(self):
         return f"Modelo {self.idmodelo}: {self.descripcion}"
+    
+
+class Prediccion(models.Model):
+    idprediccion = models.AutoField(primary_key=True)
+    valorpredicciontoday = models.FloatField()
+    valorpredicciontomorrow = models.FloatField()
+    valorprediccionaftertomorrow = models.FloatField()
+    municipioprediccion = models.CharField(max_length=50)
+    departamentoprediccion = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return f"Predicción {self.idprediccion}"
 
 @receiver(post_save, sender=Users)
 def actualizar_ubicacion_usuario(sender, instance, **kwargs):
@@ -108,3 +120,4 @@ def actualizar_ubicacion_usuario(sender, instance, **kwargs):
                 'longitudactual': longitud
             }
         )
+

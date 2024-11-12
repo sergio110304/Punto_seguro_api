@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Users, Observations, Stations, Sensors, UserLocation, MeetingPoint, ModelosPrediccion
+from .models import Users, Observations, Stations, Sensors, UserLocation, MeetingPoint, ModelosPrediccion, Prediccion
 
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
@@ -39,3 +39,7 @@ class ModelosPrediccionSerializer(serializers.ModelSerializer):
         model = ModelosPrediccion
         fields = '__all__'
         
+class PrediccionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Prediccion
+        fields = '__all__'

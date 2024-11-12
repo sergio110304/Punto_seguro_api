@@ -1,6 +1,6 @@
-from .models import Users, Observations, Stations, Sensors, UserLocation, MeetingPoint, ModelosPrediccion
+from .models import Users, Observations, Stations, Sensors, UserLocation, MeetingPoint, ModelosPrediccion, Prediccion
 from rest_framework import viewsets, permissions
-from .serializers import UsersSerializer, ObservationsSerializer, StationsSerializer, SensorsSerializer, UserLocationSerializer, MeetingPointSerializer, ModelosPrediccionSerializer
+from .serializers import UsersSerializer, ObservationsSerializer, StationsSerializer, SensorsSerializer, UserLocationSerializer, MeetingPointSerializer, ModelosPrediccionSerializer, PrediccionSerializer
 
 
 class UsersViewSet(viewsets.ModelViewSet):
@@ -54,4 +54,11 @@ class ModelosPrediccionViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = ModelosPrediccionSerializer
+
+class PrediccionViewSet(viewsets.ModelViewSet):
+    queryset = Prediccion.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = PrediccionSerializer
     

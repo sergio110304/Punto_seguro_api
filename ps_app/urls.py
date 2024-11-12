@@ -1,5 +1,5 @@
 from rest_framework import routers
-from .api import UsersViewSet, ObservationsViewSet, StationsViewSet, SensorsViewSet, UserLocationViewSet, MeetingViewSet, ModelosPrediccionViewSet
+from .api import UsersViewSet, ObservationsViewSet, StationsViewSet, SensorsViewSet, UserLocationViewSet, MeetingViewSet, ModelosPrediccionViewSet, PrediccionViewSet
 
 router = routers.DefaultRouter()
 
@@ -16,5 +16,7 @@ router.register('api/userlocation', UserLocationViewSet, 'userlocation')
 router.register('api/meetingpoint', MeetingViewSet, 'meetingpoint')
 
 router.register('api/modelosprediccion', ModelosPrediccionViewSet, 'modelosprediccion')
+
+router.register('api/prediccion', PrediccionViewSet, 'prediccion')
 
 urlpatterns = router.urls
